@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2>Påmelding</h2>
-<form action="paameldingsbekreftelse.html">
+<form action="paameldingsbekreftelse.jsp">
   <fieldset>
     <legend>Personlige data</legend>
     <p>Fornavn: <input type="text" name="fornavn" value="Arne"/></p>
