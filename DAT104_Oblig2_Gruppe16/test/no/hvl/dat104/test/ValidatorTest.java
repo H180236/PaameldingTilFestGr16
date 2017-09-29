@@ -3,9 +3,13 @@ package no.hvl.dat104.test;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 public class ValidatorTest {
-
+	
+	
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
