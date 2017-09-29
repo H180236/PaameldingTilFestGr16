@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +16,6 @@
 <tr><td>Berit Beritsen</td><td>876 54 321</td><td><input type="submit" name="87654321" value="Registrer betaling" /></td></tr>
 </table>
 </form>
-<p><a href="kassererlogin.html">Ferdig</a></p>
+<p><a href="kassererlogin.jsp">Ferdig</a></p>
 </body>
 </html>

@@ -2,7 +2,11 @@ package no.hvl.dat104.modell;
 
 public class Deltaker {
 
-	String hei;
+	private String fornavn;
+	private String etternavn;
+	private Integer mobilnummer;
+	String skjer12;
 	
-	String hade;
+	
+	String hade;	
 }

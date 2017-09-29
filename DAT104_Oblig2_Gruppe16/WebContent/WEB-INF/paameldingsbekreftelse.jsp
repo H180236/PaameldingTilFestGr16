@@ -12,6 +12,6 @@
 &nbsp;&nbsp;&nbsp;90123456<br/>
 &nbsp;&nbsp;&nbsp;mann</p>
 <p><b>NB! Husk å betale til kassereren før festen!</b></p>
-<a href="deltagerliste.html">Gå til deltagerlisten</a>
+<a href="deltagerliste.jsp">Gå til deltagerlisten</a>
 </body>
 </html>

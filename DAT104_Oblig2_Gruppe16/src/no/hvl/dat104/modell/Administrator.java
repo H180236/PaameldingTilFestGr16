@@ -4,5 +4,4 @@ public class Administrator {
 
 	String navn;
 	
-	String undertøy;
 }

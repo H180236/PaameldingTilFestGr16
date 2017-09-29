@@ -13,6 +13,6 @@
 <!-- <tr bgcolor="#aaffaa"><td align="center">&#9794;</td><td>Arne Arnesen</td></tr> -->
 <tr><td align="center">&#9792;</td><td>Berit Beritsen</td></tr>
 </table>
-<p><a href="ferdig.html">Ferdig</a></p>
+<p><a href="ferdig.jsp">Ferdig</a></p>
 </body>
 </html>

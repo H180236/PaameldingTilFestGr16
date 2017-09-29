@@ -2,6 +2,7 @@
     <wb-module deploy-name="DAT104_Oblig2_Gruppe16">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
         <property name="context-root" value="DAT104_Oblig2_Gruppe16"/>
         <property name="java-output-path" value="/DAT104_Oblig2_Gruppe16/build/classes"/>
     </wb-module>

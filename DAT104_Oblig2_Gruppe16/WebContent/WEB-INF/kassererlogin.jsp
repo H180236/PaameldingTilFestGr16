@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2>Kasserer login</h2>
-<form action="betalingsoversikt.html">
+<form action="betalingsoversikt.jsp">
   <fieldset>
     <legend>Kasserer login</legend>
     <p>Passord: <input type="password" name="password" value="allstars" /></p>
