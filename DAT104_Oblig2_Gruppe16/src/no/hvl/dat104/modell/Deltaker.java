@@ -1,12 +1,49 @@
 package no.hvl.dat104.modell;
 
-public class Deltaker {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(schema="fest", name= "deltaker")
+public class Deltaker {
+	
+	@Id
+	private String telefonnummer;
 	private String fornavn;
 	private String etternavn;
-	private Integer mobilnummer;
-	String skjer12;
+	private boolean betalingsstatus;
+	private Character kjonn;
 	
 	
-	String hade;	
+	public String getTelefonnummer() {
+		return telefonnummer;
+	}
+	public void setTelefonnummer(String telefonnummer) {
+		this.telefonnummer = telefonnummer;
+	}
+	public String getFornavn() {
+		return fornavn;
+	}
+	public void setFornavn(String fornavn) {
+		this.fornavn = fornavn;
+	}
+	public String getEtternavn() {
+		return etternavn;
+	}
+	public void setEtternavn(String etternavn) {
+		this.etternavn = etternavn;
+	}
+	public boolean isBetalingsstatus() {
+		return betalingsstatus;
+	}
+	public void setBetalingsstatus(boolean betalingsstatus) {
+		this.betalingsstatus = betalingsstatus;
+	}
+	public Character getKjonn() {
+		return kjonn;
+	}
+	public void setKjonn(Character kjonn) {
+		this.kjonn = kjonn;
+	}
 }

@@ -8,14 +8,12 @@ import no.hvl.dat104.modell.Deltaker;
 
 @Stateless
 public class DeltakerEAO {
-	
+
 	@PersistenceContext(name = "deltakerPersistenceUnit")
 	private EntityManager em;
 
-	private Deltaker finnDeltaker (String mobilnummer) {
-		return em.find(Deltaker.class,mobilnummer);
+	private Deltaker finnDeltaker(String mobilnummer) {
+		return em.find(Deltaker.class, mobilnummer);
 	}
-	
-	
 
 }
