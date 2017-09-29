@@ -7,14 +7,14 @@
 </head>
 <body>
 <h2>Påmelding</h2>
-<form action="<%= PAAMELDING_URL %>" method="post">
+<form action="PaameldingServlet" method="post">
   <fieldset>
     <legend>Personlige data</legend>
-    <p>Fornavn: <input type="text" name="fornavn" value="Fornavn"/></p>
-    <p>Etternavn: <input type="text" name="etternavn"  value="Etternavn" /></p>
-    <p>Mobil (8 siffer): <input type="text" name="mobil" value="12345678" /></p>
-    <p>Kjønn: <input type="radio" name="kjonn" value="mann" checked="checked" />mann
-        <input type="radio" name="kjonn" value="kvinne" />kvinne</p>
+    <p>Fornavn: <input type="text" name="fornavn" /></p>
+    <p>Etternavn: <input type="text" name="etternavn"" /></p>
+    <p>Mobil (8 siffer): <input type="text" name="mobil"/></p>
+    <p>Kjønn: <input type="radio" name="kjonn" value="M" checked="checked" />mann
+        <input type="radio" name="kjonn" value="F" />kvinne</p>
     <p><input type="submit" value="Meld meg på" /></p>
   </fieldset>
 </form>

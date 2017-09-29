@@ -13,7 +13,7 @@ public class Deltaker {
 	private String fornavn;
 	private String etternavn;
 	private boolean betalingsstatus;
-	private Character kjonn;
+	private String kjonn;
 	
 	
 	public String getTelefonnummer() {
@@ -40,10 +40,10 @@ public class Deltaker {
 	public void setBetalingsstatus(boolean betalingsstatus) {
 		this.betalingsstatus = betalingsstatus;
 	}
-	public Character getKjonn() {
+	public String getKjonn() {
 		return kjonn;
 	}
-	public void setKjonn(Character kjonn) {
+	public void setKjonn(String kjonn) {
 		this.kjonn = kjonn;
 	}
 }

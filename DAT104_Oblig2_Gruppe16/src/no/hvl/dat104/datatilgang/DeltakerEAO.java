@@ -15,5 +15,9 @@ public class DeltakerEAO {
 	private Deltaker finnDeltaker(String mobilnummer) {
 		return em.find(Deltaker.class, mobilnummer);
 	}
+	
+	public void leggTilDeltaker(Deltaker deltaker) {
+		em.persist(deltaker);
+	}
 
 }
