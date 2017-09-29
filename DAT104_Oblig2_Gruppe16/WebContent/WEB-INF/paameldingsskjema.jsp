@@ -1,3 +1,4 @@
+<%@ page import="static no.hvl.dat104.hjelpeklasser.UrlMappings.PAAMELDING_URL"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +7,7 @@
 </head>
 <body>
 <h2>Påmelding</h2>
-<form action="paameldingsbekreftelse.jsp">
+<form action="<%= PAAMELDING_URL %>" method="post">
   <fieldset>
     <legend>Personlige data</legend>
     <p>Fornavn: <input type="text" name="fornavn" value="Fornavn"/></p>
