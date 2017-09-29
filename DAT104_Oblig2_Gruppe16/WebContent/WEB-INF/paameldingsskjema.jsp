@@ -18,5 +18,6 @@
     <p><input type="submit" value="Meld meg på" /></p>
   </fieldset>
 </form>
+<a href="LoginServlet">Allerede påmeldt? Trykk her for å logge inn</a>
 </body>
 </html>

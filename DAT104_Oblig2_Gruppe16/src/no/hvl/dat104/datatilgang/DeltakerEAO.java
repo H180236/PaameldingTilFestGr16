@@ -29,5 +29,12 @@ public class DeltakerEAO {
 	public void leggTilDeltaker(Deltaker deltaker) {
 		em.persist(deltaker);
 	}
+	
+	public boolean eksistererDeltaker(String telefonnummer) {
+		if (em.find(Deltaker.class, telefonnummer)!=null) {
+			return true;
+		}
+		return false;
+	}
 
 }

@@ -51,7 +51,7 @@
 		</c:forEach>
 	</table>
 	<p>
-		<a href="ferdig.jsp">Ferdig</a>
+		<a href="LoggUtServlet">Ferdig</a>
 	</p>
 </body>
 </html>

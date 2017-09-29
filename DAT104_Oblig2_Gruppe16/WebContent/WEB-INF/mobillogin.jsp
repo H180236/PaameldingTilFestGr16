@@ -8,11 +8,12 @@
 <h2>Logg inn</h2>
 <p>Det er kun registrerte deltagere som får se deltagerlisten.
 Logg inn ved å gi mobil-nummeret ditt.</p>
-<form action="deltagerliste.jsp">
+<form action="LoginServlet" method="post"> 
   <fieldset>
-    <legend>Logg inn</legend>
-    <p>Mobil: <input type="password" name="mobil" value="90123456" /></p>
+    <legend>Login</legend>   
+    <p>Mobilnummer: <input type = "password" name = "telefonnummer" /> </p>
     <p><input type="submit" value="Logg inn" /></p>
+    <p> <a href = "PaameldingsServlet"> Ikke påmeldt?</a> </p>
   </fieldset>
 </form>
 
