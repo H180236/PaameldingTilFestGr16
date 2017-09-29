@@ -12,7 +12,7 @@ public class DeltakerEAO {
 	@PersistenceContext(name = "deltakerPersistenceUnit")
 	private EntityManager em;
 
-	private Deltaker finnDeltaker(String mobilnummer) {
+	public Deltaker finnDeltaker(String mobilnummer) {
 		return em.find(Deltaker.class, mobilnummer);
 	}
 	
