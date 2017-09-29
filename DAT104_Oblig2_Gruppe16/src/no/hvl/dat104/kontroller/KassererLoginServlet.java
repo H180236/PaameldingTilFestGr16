@@ -14,28 +14,34 @@ import no.hvl.dat104.datatilgang.DeltakerEAO;
 import no.hvl.dat104.modell.Deltaker;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class KassererLogin
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/KassererLoginServlet")
+public class KassererLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-  
-    public LoginServlet() {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public KassererLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		request.getRequestDispatcher("/WEB-INF/mobillogin.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/kassererlogin.jsp").forward(request, response);
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	
 	@EJB
 	DeltakerEAO dEAO;
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		
 		String telefonnummer = request.getParameter("telefonnummer");
 		Deltaker deltaker = new Deltaker();
@@ -44,18 +50,13 @@ public class LoginServlet extends HttpServlet {
 		HttpSession sesjon = request.getSession();
 		sesjon.setAttribute("brukernavn", telefonnummer);
 		
-		if (deltaker.getTelefonnummer().equals(telefonnummer)) {
-			response.sendRedirect("DeltakerlisteServlet");
+		if (deltaker.getTelefonnummer().equals(telefonnummer) && deltaker.isKasserer()) {
+			request.getRequestDispatcher("/WEB-INF/betalingsoversikt.jsp").forward(request, response);
 		
 		}
 		else {
 			response.sendRedirect("/WEB-INF/mobillogin.jsp");
 		}
-	
-		
-			
-		
-		
 	}
 
 }

@@ -6,10 +6,10 @@
 </head>
 <body>
 <h2>Kasserer login</h2>
-<form action="betalingsoversikt.jsp">
+<form action="KassererLoginServlet" method="post">
   <fieldset>
     <legend>Kasserer login</legend>
-    <p>Passord: <input type="password" name="password" value="allstars" /></p>
+    <p>Passord: <input type="password" name="telefonnummer" /></p>
     <p><input type="submit" value="Logg inn" /></p>
   </fieldset>
 </form>

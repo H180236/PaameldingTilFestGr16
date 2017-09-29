@@ -47,7 +47,7 @@ public class PaameldingServlet extends HttpServlet {
 		if(Validator.valider(request)){
 		
 		System.out.println("Er validert, setter data inn i objektet");
-		nyDeltaker.setBetalingsstatus(true);
+		
 		nyDeltaker.setEtternavn(etternavn);
 		nyDeltaker.setFornavn(fornavn);
 		nyDeltaker.setTelefonnummer(telefonnummer);

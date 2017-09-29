@@ -14,6 +14,7 @@ Logg inn ved å gi mobil-nummeret ditt.</p>
     <p>Mobilnummer: <input type = "password" name = "telefonnummer" /> </p>
     <p><input type="submit" value="Logg inn" /></p>
     <p> <a href = "PaameldingsServlet"> Ikke påmeldt?</a> </p>
+    <p> <a href = "KassererLoginServlet">Logge inn som kasserer?</a> 
   </fieldset>
 </form>
 

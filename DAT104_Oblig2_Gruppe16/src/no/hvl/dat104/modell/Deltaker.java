@@ -13,6 +13,14 @@ public class Deltaker {
 	private String fornavn;
 	private String etternavn;
 	private boolean betalingsstatus;
+	private boolean kasserer;
+	
+	public boolean isKasserer() {
+		return kasserer;
+	}
+	public void setKasserer(boolean kasserer) {
+		this.kasserer = kasserer;
+	}
 	private String kjonn;
 	
 	
