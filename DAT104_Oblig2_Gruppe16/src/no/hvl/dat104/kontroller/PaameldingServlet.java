@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import no.hvl.dat104.datatilgang.DeltakerEAO;
 import no.hvl.dat104.hjelpeklasser.Validator;
@@ -46,7 +47,7 @@ public class PaameldingServlet extends HttpServlet {
 		if(Validator.valider(request)){
 		
 		System.out.println("Er validert, setter data inn i objektet");
-		nyDeltaker.setBetalingsstatus(false);
+		nyDeltaker.setBetalingsstatus(true);
 		nyDeltaker.setEtternavn(etternavn);
 		nyDeltaker.setFornavn(fornavn);
 		nyDeltaker.setTelefonnummer(telefonnummer);
@@ -67,6 +68,10 @@ public class PaameldingServlet extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/paameldingsskjema.jsp").forward(request, response);
 			return;
 		}
+		 HttpSession sesjon = request.getSession();
+         
+         sesjon.setAttribute("brukernavn", telefonnummer);
+         sesjon.setAttribute("Deltaker",nyDeltaker);
 
 		// Redirecter til bekreftelse dersom bruker blir meldt på
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/paameldingsbekreftelse.jsp");
