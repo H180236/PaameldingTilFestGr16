@@ -1,4 +1,7 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.List, no.hvl.dat104.modell.Deltaker"%>
 
 <!DOCTYPE html>
 <html>
@@ -10,22 +13,26 @@
 	<h2>Betalingsoversikt</h2>
 	<form>
 		<table border="1">
-			<tr bgcolor="#cccccc">
-				<th align="left">Navn</th>
-				<th>Mobil</th>
-				<th>Betalingsstatus</th>
-			</tr>
+		<c:forEach items="${deltakere}" var="deltaker">
+			
 			<tr>
-				<td>Arne And</td>
-				<td>123 45 678</td>
+				<td>${deltaker.fornavn} ${deltaker.etternavn}</td>
+				<td>${deltaker.telefonnummer}</td>
+				<c:choose>
+				<c:when test="${deltaker.betalingsstatus}">
 				<td align="center">Betaling mottatt</td>
-			</tr>
-			<tr>
-				<td>Arne Arnesen</td>
-				<td>901 23 456</td>
-				<td><input type="submit" name="90123456"
+				</c:when>
+				<c:otherwise>
+						<td><input type="submit" name="${deltaker.telefonnummer}"
 					value="Registrer betaling" /></td>
+					</c:otherwise>
+				
+				</c:choose>
+				
 			</tr>
+			
+			</c:forEach>
+			
 			<tr>
 				<td>Berit Beritsen</td>
 				<td>876 54 321</td>

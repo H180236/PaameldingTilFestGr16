@@ -1,6 +1,7 @@
 package no.hvl.dat104.kontroller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -51,6 +52,8 @@ public class KassererLoginServlet extends HttpServlet {
 		sesjon.setAttribute("brukernavn", telefonnummer);
 		
 		if (deltaker.getTelefonnummer().equals(telefonnummer) && deltaker.isKasserer()) {
+			List <Deltaker> deltakere = dEAO.alleDeltakere();
+			sesjon.setAttribute("deltakere", deltakere);
 			request.getRequestDispatcher("/WEB-INF/betalingsoversikt.jsp").forward(request, response);
 		
 		}
