@@ -1,6 +1,7 @@
 package no.hvl.dat104.kontroller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -19,23 +20,27 @@ import no.hvl.dat104.modell.*;
 @WebServlet("/DeltakerlisteServlet")
 public class DeltakerlisteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DeltakerlisteServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-    @EJB
-    DeltakerEAO dEAO;
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession().getAttribute("brukernavn")!=null) {
-		List <Deltaker> deltakere = dEAO.alleDeltakere();
-		request.getSession().setAttribute("deltakere", deltakere);
-		request.getRequestDispatcher("/WEB-INF/deltagerliste.jsp").forward(request, response);
-		} else request.getRequestDispatcher("LoginServlet").forward(request, response);
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public DeltakerlisteServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
+	@EJB
+	DeltakerEAO dEAO;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		if (request.getSession().getAttribute("brukernavn") != null) {
+			List<Deltaker> deltakere = dEAO.alleDeltakere();
+
+			request.getSession().setAttribute("deltakere", deltakere);
+			request.getRequestDispatcher("/WEB-INF/deltagerliste.jsp").forward(request, response);
+		} else
+			request.getRequestDispatcher("LoginServlet").forward(request, response);
+	}
 
 }
