@@ -30,9 +30,11 @@ public class DeltakerlisteServlet extends HttpServlet {
     @EJB
     DeltakerEAO dEAO;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (request.getSession().getAttribute("brukernavn")!=null) {
 		List <Deltaker> deltakere = dEAO.alleDeltakere();
 		request.getSession().setAttribute("deltakere", deltakere);
 		request.getRequestDispatcher("/WEB-INF/deltagerliste.jsp").forward(request, response);
+		} else request.getRequestDispatcher("LoginServlet").forward(request, response);
 	}
 
 

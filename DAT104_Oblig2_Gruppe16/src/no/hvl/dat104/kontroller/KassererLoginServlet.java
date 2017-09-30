@@ -52,13 +52,12 @@ public class KassererLoginServlet extends HttpServlet {
 		sesjon.setAttribute("brukernavn", telefonnummer);
 		
 		if (deltaker.getTelefonnummer().equals(telefonnummer) && deltaker.isKasserer()) {
-			List <Deltaker> deltakere = dEAO.alleDeltakere();
-			sesjon.setAttribute("deltakere", deltakere);
-			request.getRequestDispatcher("/WEB-INF/betalingsoversikt.jsp").forward(request, response);
+			
+			request.getRequestDispatcher("BetalingsServlet").forward(request, response);
 		
 		}
 		else {
-			response.sendRedirect("/WEB-INF/mobillogin.jsp");
+			response.sendRedirect("LoginServlet");
 		}
 	}
 

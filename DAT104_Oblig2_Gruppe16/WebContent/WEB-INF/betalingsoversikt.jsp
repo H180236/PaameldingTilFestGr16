@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h2>Betalingsoversikt</h2>
-	<form>
+	<form action = "BetalingsServlet" method = "post">
 		<table border="1">
 		<c:forEach items="${deltakere}" var="deltaker">
 			
@@ -23,8 +23,8 @@
 				<td align="center">Betaling mottatt</td>
 				</c:when>
 				<c:otherwise>
-						<td><input type="submit" name="${deltaker.telefonnummer}"
-					value="Registrer betaling" /></td>
+						<td><input type="hidden" name="telefonnummer" value="${deltaker.telefonnummer}">
+        <input type="submit" value="Registrer betaling">
 					</c:otherwise>
 				
 				</c:choose>
@@ -33,12 +33,7 @@
 			
 			</c:forEach>
 			
-			<tr>
-				<td>Berit Beritsen</td>
-				<td>876 54 321</td>
-				<td><input type="submit" name="87654321"
-					value="Registrer betaling" /></td>
-			</tr>
+		
 		</table>
 	</form>
 	<p>

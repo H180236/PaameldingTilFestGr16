@@ -36,5 +36,15 @@ public class DeltakerEAO {
 		}
 		return false;
 	}
+	public void oppdaterDeltaker(Deltaker d) {
+		em.merge(d);
+	}
+	
+	public void registrerBetaling (String telefonnummer, Boolean betalingsstatus) {
+		Deltaker deltaker = finnDeltaker(telefonnummer);
+		deltaker.setBetalingsstatus(betalingsstatus);
+		oppdaterDeltaker(deltaker);
+		
+	}
 
 }

@@ -13,6 +13,6 @@
     <p><input type="submit" value="Logg inn" /></p>
   </fieldset>
 </form>
-
+<p><a href="LoginServlet">Tilbake til login som deltaker</a></p>
 </body>
 </html>

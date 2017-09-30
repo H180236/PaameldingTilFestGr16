@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(schema="fest", name= "deltaker")
-public class Deltaker {
+public class Deltaker  {
 	
 	@Id
 	private String telefonnummer;
@@ -54,4 +54,5 @@ public class Deltaker {
 	public void setKjonn(String kjonn) {
 		this.kjonn = kjonn;
 	}
+	
 }
