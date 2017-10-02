@@ -43,13 +43,15 @@ public class LoginServlet extends HttpServlet {
 		
 		HttpSession sesjon = request.getSession();
 		sesjon.setAttribute("brukernavn", telefonnummer);
+		if (deltaker!=null) {
 		
 		if (deltaker.getTelefonnummer().equals(telefonnummer)) {
 			response.sendRedirect("DeltakerlisteServlet");
 		
 		}
+		}
 		else {
-			response.sendRedirect("/WEB-INF/mobillogin.jsp");
+			response.sendRedirect("LoginServlet");
 		}
 	
 		

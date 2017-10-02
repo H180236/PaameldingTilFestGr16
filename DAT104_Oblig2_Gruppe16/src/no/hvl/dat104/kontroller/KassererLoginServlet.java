@@ -46,7 +46,12 @@ public class KassererLoginServlet extends HttpServlet {
 		
 		String telefonnummer = request.getParameter("telefonnummer");
 		Deltaker deltaker = new Deltaker();
+		
+		try {
 		deltaker = dEAO.finnDeltaker(telefonnummer);
+		} catch (Exception e ) {
+			System.out.println("Finner ikke deltaker");
+		}
 		
 		HttpSession sesjon = request.getSession();
 		sesjon.setAttribute("brukernavn", telefonnummer);
