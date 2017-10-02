@@ -46,20 +46,19 @@ public class KassererLoginServlet extends HttpServlet {
 		
 		String telefonnummer = request.getParameter("telefonnummer");
 		Deltaker deltaker = new Deltaker();
-		
-		try {
 		deltaker = dEAO.finnDeltaker(telefonnummer);
-		} catch (Exception e ) {
-			System.out.println("Finner ikke deltaker");
-		}
+		
 		
 		HttpSession sesjon = request.getSession();
 		sesjon.setAttribute("brukernavn", telefonnummer);
 		
+		if (deltaker!=null) {
 		if (deltaker.getTelefonnummer().equals(telefonnummer) && deltaker.isKasserer()) {
-			
+			List <Deltaker> deltakere = dEAO.alleDeltakere();
+			sesjon.setAttribute("deltakere", deltakere);
 			request.getRequestDispatcher("BetalingsServlet").forward(request, response);
 		
+		}
 		}
 		else {
 			response.sendRedirect("LoginServlet");
