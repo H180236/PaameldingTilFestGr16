@@ -32,14 +32,14 @@
 				<c:choose>
 				
 					<c:when test="${deltaker.telefonnummer.equals(brukernavn) && !betalt }">
-						<td style="background-color:red">${deltaker.fornavn}${deltaker.etternavn}</td>
+						<td style="background-color:red">${deltaker.fornavn} ${deltaker.etternavn}</td>
 					</c:when>
 					<c:when test="${deltaker.telefonnummer.equals(brukernavn) && betalt }">
-						<td style="background-color:green">${deltaker.fornavn}${deltaker.etternavn}</td>
+						<td style="background-color:green">${deltaker.fornavn} ${deltaker.etternavn}</td>
 					</c:when>
 					
 					<c:otherwise>
-						<td>${deltaker.fornavn}${deltaker.etternavn}</td>
+						<td>${deltaker.fornavn} ${deltaker.etternavn}</td>
 					</c:otherwise>
 				</c:choose>
 				
