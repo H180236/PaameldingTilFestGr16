@@ -9,8 +9,8 @@
 </head>
 <body>
 <h1 style = "color:purple">Fest</h1>
-<h2><a href = "PaameldingServlet">Påmelding</a></h2>
-<h2><a href = "LoginServlet">Logg inn</a></h2>
-<h3><a href = "KassererLoginServlet">For kasserere</a></h3>
+<h2><a href = "paamelding">Påmelding</a></h2>
+<h2><a href = "login">Logg inn</a></h2>
+<h3><a href = "kasserer">For kasserere</a></h3>
 </body>
 </html>

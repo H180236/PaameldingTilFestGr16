@@ -21,6 +21,6 @@
 ${Deltaker.betalingsstatus}
 </p>
 <p><b>NB! Husk å betale til kassereren før festen!</b></p>
-<a href="DeltakerlisteServlet">Gå til deltagerlisten</a>
+<a href="deltakere">Gå til deltagerlisten</a>
 </body>
 </html>

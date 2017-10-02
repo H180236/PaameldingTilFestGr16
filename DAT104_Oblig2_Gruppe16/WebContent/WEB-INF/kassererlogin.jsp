@@ -6,13 +6,13 @@
 </head>
 <body>
 <h2>Kasserer login</h2>
-<form action="KassererLoginServlet" method="post">
+<form action="kasserer" method="post">
   <fieldset>
     <legend>Kasserer login</legend>
     <p>Passord: <input type="password" name="telefonnummer" /></p>
     <p><input type="submit" value="Logg inn" /></p>
   </fieldset>
 </form>
-<p><a href="LoginServlet">Tilbake til login som deltaker</a></p>
+<p><a href="login">Tilbake til login som deltaker</a></p>
 </body>
 </html>

@@ -7,6 +7,6 @@
 <body>
 <h1>Ferdig</h1>
 <p>Du er nå logget ut.</p>
-<p>Du kan se deltagerlisten igjen ved å gå <a href="LoginServlet">hit</a>.</p>
+<p>Du kan se deltagerlisten igjen ved å gå <a href="login">hit</a>.</p>
 </body>
 </html>

@@ -51,7 +51,7 @@
 		</c:forEach>
 	</table>
 	<p>
-		<a href="LoggUtServlet">Ferdig</a>
+		<a href="logout">Ferdig</a>
 	</p>
 </body>
 </html>

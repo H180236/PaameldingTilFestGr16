@@ -21,7 +21,7 @@ public class DeltakerEAO {
 	}
 	
 	public List<Deltaker> alleDeltakere() {
-		TypedQuery<Deltaker> query = em.createQuery("SELECT d FROM Deltaker d", Deltaker.class);
+		TypedQuery<Deltaker> query = em.createQuery("SELECT d FROM Deltaker d ORDER BY d.fornavn, d.etternavn", Deltaker.class);
 		return query.getResultList();
 	
 	}

@@ -1,5 +1,7 @@
 package no.hvl.dat104.kontroller;
 
+import static no.hvl.dat104.hjelpeklasser.UrlMappings.*;
+
 import java.io.IOException;
 
 import javax.ejb.EJB;
@@ -16,7 +18,7 @@ import no.hvl.dat104.modell.Deltaker;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
+@WebServlet("/" + LOGIN_URL)
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,7 +29,18 @@ public class LoginServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
+		String errorMessage = "";
+		
+		if(request.getParameter("requiresLogin") != null) {
+			errorMessage = "forespørslelen krever pålogging." 
+		+ "(Du kan ha blitt logget ut automatisk)";
+		
+		} else if(request.getParameter("invalidUsername") != null) {
+			errorMessage = "feil brukernavn, prøv igjen";
+		}
+		request.setAttribute("errorMessage", errorMessage);
+		
 		request.getRequestDispatcher("/WEB-INF/mobillogin.jsp").forward(request, response);
 	}
 
@@ -38,20 +51,20 @@ public class LoginServlet extends HttpServlet {
 		
 		
 		String telefonnummer = request.getParameter("telefonnummer");
+		HttpSession sesjon = request.getSession();
 		Deltaker deltaker = new Deltaker();
 		deltaker = dEAO.finnDeltaker(telefonnummer);
 		
-		HttpSession sesjon = request.getSession();
-		sesjon.setAttribute("brukernavn", telefonnummer);
+		
 		if (deltaker!=null) {
 		
 		if (deltaker.getTelefonnummer().equals(telefonnummer)) {
-			response.sendRedirect("DeltakerlisteServlet");
-		
+			sesjon.setAttribute("brukernavn", telefonnummer);
+			response.sendRedirect(DELTAKERLISTE_URL);
 		}
 		}
 		else {
-			response.sendRedirect("LoginServlet");
+			response.sendRedirect(LOGIN_URL + "?invalidUsername");
 		}
 	
 		

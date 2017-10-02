@@ -13,11 +13,11 @@ import javax.servlet.http.HttpSession;
 
 import no.hvl.dat104.datatilgang.DeltakerEAO;
 import no.hvl.dat104.modell.Deltaker;
-
+import static no.hvl.dat104.hjelpeklasser.UrlMappings.*;
 /**
  * Servlet implementation class KassererLogin
  */
-@WebServlet("/KassererLoginServlet")
+@WebServlet("/" + KASSERER_URL)
 public class KassererLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -54,14 +54,12 @@ public class KassererLoginServlet extends HttpServlet {
 		
 		if (deltaker!=null) {
 		if (deltaker.getTelefonnummer().equals(telefonnummer) && deltaker.isKasserer()) {
-			List <Deltaker> deltakere = dEAO.alleDeltakere();
-			sesjon.setAttribute("deltakere", deltakere);
-			request.getRequestDispatcher("BetalingsServlet").forward(request, response);
+			request.getRequestDispatcher(BETALING_URL).forward(request, response);
 		
 		}
 		}
 		else {
-			response.sendRedirect("LoginServlet");
+			response.sendRedirect(LOGIN_URL);
 		}
 	}
 

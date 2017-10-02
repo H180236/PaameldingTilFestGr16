@@ -7,7 +7,7 @@
 </head>
 <body>
 <h2>Påmelding</h2>
-<form action="PaameldingServlet" method="post">
+<form action="paamelding" method="post">
   <fieldset>
     <legend>Personlige data</legend>
     <p>Fornavn: <input type="text" name="fornavn" /></p>
@@ -18,6 +18,6 @@
     <p><input type="submit" value="Meld meg på" /></p>
   </fieldset>
 </form>
-<a href="LoginServlet">Allerede påmeldt? Trykk her for å logge inn</a>
+<a href="login">Allerede påmeldt? Trykk her for å logge inn</a>
 </body>
 </html>

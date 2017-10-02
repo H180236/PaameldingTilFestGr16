@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h2>Betalingsoversikt</h2>
-	<form action = "BetalingsServlet" method = "post">
+	<form action = "betaling" method = "post">
 		<table border="1">
 		<c:forEach items="${deltakere}" var="deltaker">
 			
@@ -37,7 +37,7 @@
 		</table>
 	</form>
 	<p>
-		<a href="LoggUtServlet">Ferdig</a>
+		<a href="logout">Ferdig</a>
 	</p>
 </body>
 </html>

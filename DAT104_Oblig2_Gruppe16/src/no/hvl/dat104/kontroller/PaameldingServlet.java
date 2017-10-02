@@ -14,11 +14,11 @@ import javax.servlet.http.HttpSession;
 import no.hvl.dat104.datatilgang.DeltakerEAO;
 import no.hvl.dat104.hjelpeklasser.Validator;
 import no.hvl.dat104.modell.Deltaker;
-
+import static no.hvl.dat104.hjelpeklasser.UrlMappings.*;
 /**
  * Servlet implementation class PaameldingServlet
  */
-@WebServlet("/PaameldingServlet")
+@WebServlet("/" + PAAMELDING_URL)
 public class PaameldingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -38,7 +38,7 @@ public class PaameldingServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// Får tak i data fra påmeldingsskjema, lager deretter et nytt deltakerobjekt
+		// Fï¿½r tak i data fra pï¿½meldingsskjema, lager deretter et nytt deltakerobjekt
 		String telefonnummer = request.getParameter("mobil");
 		String fornavn = request.getParameter("fornavn");
 		String etternavn = request.getParameter("etternavn");
@@ -53,18 +53,18 @@ public class PaameldingServlet extends HttpServlet {
 		nyDeltaker.setTelefonnummer(telefonnummer);
 		nyDeltaker.setKjonn(kjonn);
 		} else {
-			System.out.println("Ikke validert, sender til påmeldingsskjema");
+			System.out.println("Ikke validert, sender til pï¿½meldingsskjema");
 			request.getRequestDispatcher("/WEB-INF/paameldingsskjema.jsp").forward(request, response);
 			return;
 		}
 
 		// Sjekker om telefonnummeret er i bruk, dersom det er i bruk blir man sendt
-		// tilbake til påmelding, ellers blir deltaker lagt til i databasen
+		// tilbake til pï¿½melding, ellers blir deltaker lagt til i databasen
 		System.out.println("kommet til sjekk om deltaker finnes");
 		if (dEAO.finnDeltaker(telefonnummer) == null) {
 			dEAO.leggTilDeltaker(nyDeltaker);
 		} else {
-			System.out.println("Deltaker finnes, sendes til påmeldingsskjema");
+			System.out.println("Deltaker finnes, sendes til pï¿½meldingsskjema");
 			request.getRequestDispatcher("/WEB-INF/paameldingsskjema.jsp").forward(request, response);
 			return;
 		}
@@ -73,7 +73,7 @@ public class PaameldingServlet extends HttpServlet {
          sesjon.setAttribute("brukernavn", telefonnummer);
          sesjon.setAttribute("Deltaker",nyDeltaker);
 
-		// Redirecter til bekreftelse dersom bruker blir meldt på
+		// Redirecter til bekreftelse dersom bruker blir meldt pï¿½
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/paameldingsbekreftelse.jsp");
 		dispatcher.forward(request, response);
 	}

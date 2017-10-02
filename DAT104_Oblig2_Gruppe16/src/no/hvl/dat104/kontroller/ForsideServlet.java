@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import static no.hvl.dat104.hjelpeklasser.UrlMappings.FORSIDE_URL;
+import static no.hvl.dat104.hjelpeklasser.UrlMappings.*;
 
 /**
  * Servlet implementation class ForsideServlet

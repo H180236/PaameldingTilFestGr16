@@ -15,11 +15,12 @@ import javax.servlet.http.HttpSession;
 
 import no.hvl.dat104.datatilgang.DeltakerEAO;
 import no.hvl.dat104.modell.Deltaker;
+import static no.hvl.dat104.hjelpeklasser.UrlMappings.*;
 
 /**
  * Servlet implementation class BetalingsServlet
  */
-@WebServlet("/BetalingsServlet")
+@WebServlet("/" + BETALING_URL)
 public class BetalingsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -41,10 +42,12 @@ public class BetalingsServlet extends HttpServlet {
 		
 		HttpSession sesjon = request.getSession();
 		if (sesjon.getAttribute("brukernavn").equals("91765536")) {
+			List <Deltaker> deltakere = dEAO.alleDeltakere();
+			sesjon.setAttribute("deltakere", deltakere);
 			
 			request.getRequestDispatcher("/WEB-INF/betalingsoversikt.jsp").forward(request, response);
 		} else
-			request.getRequestDispatcher("LoginServlet").forward(request, response);
+			request.getRequestDispatcher(LOGIN_URL).forward(request, response);
 	}
 
 	/**
@@ -59,7 +62,7 @@ public class BetalingsServlet extends HttpServlet {
 
 		String telefonnummer = request.getParameter("telefonnummer");
 		dEAO.registrerBetaling(telefonnummer, true);
-		response.sendRedirect("BetalingsServlet");
+		response.sendRedirect(BETALING_URL);
 
 	}
 

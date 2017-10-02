@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import static no.hvl.dat104.hjelpeklasser.UrlMappings.*;
 /**
  * Servlet implementation class LoggUtServlet
  */
-@WebServlet("/LoggUtServlet")
+@WebServlet("/" + LOGOUT_URL)
 public class LoggUtServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

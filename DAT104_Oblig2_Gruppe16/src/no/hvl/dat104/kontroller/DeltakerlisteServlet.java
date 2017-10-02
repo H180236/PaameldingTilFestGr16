@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import no.hvl.dat104.datatilgang.DeltakerEAO;
 import no.hvl.dat104.modell.*;
-
+import static no.hvl.dat104.hjelpeklasser.UrlMappings.*;
 /**
  * Servlet implementation class DeltakerlisteServlet
  */
-@WebServlet("/DeltakerlisteServlet")
+@WebServlet("/" + DELTAKERLISTE_URL)
 public class DeltakerlisteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -40,7 +40,7 @@ public class DeltakerlisteServlet extends HttpServlet {
 			request.getSession().setAttribute("deltakere", deltakere);
 			request.getRequestDispatcher("/WEB-INF/deltagerliste.jsp").forward(request, response);
 		} else
-			request.getRequestDispatcher("LoginServlet").forward(request, response);
+			request.getRequestDispatcher("login").forward(request, response);
 	}
 
 }
