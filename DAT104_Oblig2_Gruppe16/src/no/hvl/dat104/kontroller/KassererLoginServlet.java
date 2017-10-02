@@ -54,8 +54,7 @@ public class KassererLoginServlet extends HttpServlet {
 		
 		if (deltaker!=null) {
 		if (deltaker.getTelefonnummer().equals(telefonnummer) && deltaker.isKasserer()) {
-			List <Deltaker> deltakere = dEAO.alleDeltakere();
-			sesjon.setAttribute("deltakere", deltakere);
+			
 			request.getRequestDispatcher("BetalingsServlet").forward(request, response);
 		
 		}

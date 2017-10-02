@@ -41,10 +41,12 @@ public class BetalingsServlet extends HttpServlet {
 		
 		HttpSession sesjon = request.getSession();
 		if (sesjon.getAttribute("brukernavn").equals("91765536")) {
-			
+			List <Deltaker> deltakere = dEAO.alleDeltakere();
+			sesjon.setAttribute("deltakere", deltakere);
 			request.getRequestDispatcher("/WEB-INF/betalingsoversikt.jsp").forward(request, response);
-		} else
+		} else {
 			request.getRequestDispatcher("LoginServlet").forward(request, response);
+		}
 	}
 
 	/**
