@@ -20,13 +20,13 @@ public class ValidatorTest {
     }
     @Test
     public void validFornavnTegn() {
-        assertTrue(Validator.validFornavn("ÆØÅæøå"));
+        assertTrue(Validator.validFornavn("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
         assertTrue(Validator.validFornavn("A B"));
         assertTrue(Validator.validFornavn("ABC-D"));
     }
     
     @Test
-    public void dårligeFornavn() {
+    public void darligeFornavn() {
     	assertFalse(Validator.validFornavn("aaaa"));
     	assertFalse(Validator.validFornavn("A"));
     	assertFalse(Validator.validFornavn(" "));
@@ -42,12 +42,12 @@ public class ValidatorTest {
     
     @Test
     public void validEtternavnTegn() {
-        assertTrue(Validator.validEtternavn("ÆØÅæøå"));
+        assertTrue(Validator.validEtternavn("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
         assertTrue(Validator.validEtternavn("AB-C"));
     }
     
     @Test
-    public void dårligeEtternavn() {
+    public void darligeEtternavn() {
     	   assertFalse(Validator.validEtternavn("aaaa"));
            assertFalse(Validator.validEtternavn("A"));
            assertFalse(Validator.validEtternavn(" "));
@@ -65,7 +65,7 @@ public class ValidatorTest {
     }
     
     @Test
-    public void kjønn() {
+    public void kjonn() {
     	assertTrue(Validator.validKjonn("M"));
     	assertTrue(Validator.validKjonn("F"));
     	assertFalse(Validator.validKjonn("A"));
