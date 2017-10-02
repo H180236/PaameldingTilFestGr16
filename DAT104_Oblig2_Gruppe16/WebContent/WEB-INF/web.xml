@@ -5,11 +5,43 @@
 	version="3.1">
 	<display-name>DAT104_Oblig2_Gruppe16</display-name>
 	<welcome-file-list>
-
 		<welcome-file>forside</welcome-file>
-
-
-
-
 	</welcome-file-list>
+	
+	<servlet-mapping>
+	<servlet-name>BetalingsServlet</servlet-name>
+	<url-pattern>/BetalingsServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+	<servlet-name>DeltakerlisteServlet</servlet-name>
+	<url-pattern>/DeltakerlisteServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+	<servlet-name>ForsideServlet</servlet-name>
+	<url-pattern>/forside</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+	<servlet-name>KassererLoginServlet</servlet-name>
+	<url-pattern>/KassererLoginServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+	<servlet-name>LoggUtServlet</servlet-name>
+	<url-pattern>/LoggUtServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+	<servlet-name>LoginServlet</servlet-name>
+	<url-pattern>/LoginServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+	<servlet-name>PaameldingServlet</servlet-name>
+	<url-pattern>/PaameldingServlet</url-pattern>
+	</servlet-mapping>
+	
+	
 </web-app>
