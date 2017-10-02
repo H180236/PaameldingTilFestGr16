@@ -12,7 +12,7 @@ import static no.hvl.dat104.hjelpeklasser.UrlMappings.FORSIDE_URL;
 /**
  * Servlet implementation class ForsideServlet
  */
-@WebServlet("/" + FORSIDE_URL)
+
 public class ForsideServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

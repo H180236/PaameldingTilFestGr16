@@ -18,7 +18,7 @@ import no.hvl.dat104.modell.Deltaker;
 /**
  * Servlet implementation class PaameldingServlet
  */
-@WebServlet("/PaameldingServlet")
+
 public class PaameldingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

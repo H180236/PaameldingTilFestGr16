@@ -17,7 +17,7 @@ import no.hvl.dat104.modell.*;
 /**
  * Servlet implementation class DeltakerlisteServlet
  */
-@WebServlet("/DeltakerlisteServlet")
+
 public class DeltakerlisteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -18,7 +18,7 @@ import no.hvl.dat104.modell.Deltaker;
 /**
  * Servlet implementation class KassererLogin
  */
-@WebServlet("/KassererLoginServlet")
+
 public class KassererLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        String passord;
@@ -48,7 +48,7 @@ public class KassererLoginServlet extends HttpServlet {
 		
 		
 		HttpSession sesjon = request.getSession();
-		sesjon.setAttribute("brukernavn", telefonnummer);
+		sesjon.setAttribute("brukernavn", "te");
 		
 		if (telefonnummer!=null) {
 		if (telefonnummer.equals(passord)) {

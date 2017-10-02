@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class LoggUtServlet
  */
-@WebServlet("/LoggUtServlet")
+
 public class LoggUtServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
