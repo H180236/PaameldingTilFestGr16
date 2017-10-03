@@ -17,8 +17,13 @@
 <p>&nbsp;&nbsp;&nbsp;${Deltaker.fornavn}<br/>
 &nbsp;&nbsp;&nbsp;${Deltaker.etternavn}<br/>
 &nbsp;&nbsp;&nbsp;${Deltaker.telefonnummer}<br/>
-&nbsp;&nbsp;&nbsp;${Deltaker.kjonn}
-${Deltaker.betalingsstatus}
+<c:if test = "${Deltaker.kjonn.equals('M')}">
+       &nbsp;&nbsp;&nbsp;Mann<br/>
+      </c:if>
+<c:if test = "${Deltaker.kjonn.equals('F')}">
+       &nbsp;&nbsp;&nbsp;Kvinne<br/>
+      </c:if>      
+
 </p>
 <p><b>NB! Husk å betale til kassereren før festen!</b></p>
 <a href="deltakere">Gå til deltagerlisten</a>
