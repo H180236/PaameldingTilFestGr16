@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import no.hvl.dat104.datatilgang.DeltakerEAO;
 import no.hvl.dat104.modell.*;
 import static no.hvl.dat104.hjelpeklasser.UrlMappings.*;
+
 /**
  * Servlet implementation class DeltakerlisteServlet
  */
@@ -34,7 +35,8 @@ public class DeltakerlisteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if (request.getSession().getAttribute("brukernavn") != null) {
+
+		if (dEAO.eksistererDeltaker((String) request.getSession().getAttribute("brukernavn"))) {
 			List<Deltaker> deltakere = dEAO.alleDeltakere();
 
 			request.getSession().setAttribute("deltakere", deltakere);
