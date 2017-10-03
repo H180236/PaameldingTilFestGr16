@@ -4,4 +4,18 @@
   <welcome-file-list>
     <welcome-file>forside</welcome-file>
   </welcome-file-list>
+  
+  <servlet>
+  <servlet-name>KassererLoginServlet</servlet-name>
+  <servlet-class>no.hvl.dat104.kontroller.KassererLoginServlet</servlet-class>
+  <init-param>
+  <param-name>KassererPassord</param-name>
+  <param-value>12341234</param-value>
+  </init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>KassererLoginServlet</servlet-name>
+  <url-pattern>/kasserer</url-pattern>
+  </servlet-mapping>
 </web-app>
