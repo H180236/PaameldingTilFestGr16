@@ -24,11 +24,6 @@ public class KassererLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	String kassererPassord;
 
-	public KassererLoginServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -36,47 +31,37 @@ public class KassererLoginServlet extends HttpServlet {
 
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String errorMessage = "";
 
 		if (request.getParameter("KassererPassord") != null) {
-			errorMessage = "forespÃ¸rslelen krever pÃ¥logging." + "(Du kan ha blitt logget ut automatisk)";
+			errorMessage = "forespørselen krever pålogging." + "(Du kan ha blitt logget ut automatisk)";
 
 		} else if (request.getParameter("invalidUsername") != null) {
-			errorMessage = "Feil passord, prÃ¸v igjen!";
+			errorMessage = "Feil passord, prøv igjen!";
 		}
 		request.setAttribute("errorMessage", errorMessage);
 		request.getRequestDispatcher("/WEB-INF/kassererlogin.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-
 	@EJB
 	DeltakerEAO dEAO;
 
+	// Sjekker om bruker skrev inn rett kasserer passord (hardkodet i initparam),
+	// dersom rett får man betalingsoversikt
+	// Dersom feil blir man bare sendt tilbake til kasserer login med en
+	// feilmelding.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String telefonnummer = request.getParameter("telefonnummer");
-
 		HttpSession sesjon = request.getSession();
-		sesjon.setAttribute("brukernavn", telefonnummer);
-		System.out.println(telefonnummer);
-		System.out.print(kassererPassord);
+		String telefonnummer = request.getParameter("telefonnummer");
 		String passord = kassererPassord;
 
 		if (telefonnummer.equals(passord)) {
 			sesjon.setAttribute("kasserer", "1");
-			System.out.println("Rett passord skrevet inn, prï¿½ver ï¿½ redirecte til" + BETALING_URL);
 			response.sendRedirect(BETALING_URL);
 
 		} else {

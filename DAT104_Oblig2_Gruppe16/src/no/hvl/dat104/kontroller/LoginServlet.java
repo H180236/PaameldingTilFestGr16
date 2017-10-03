@@ -33,11 +33,11 @@ public class LoginServlet extends HttpServlet {
 		String errorMessage = "";
 		
 		if(request.getParameter("requiresLogin") != null) {
-			errorMessage = "forespÃ¸rslelen krever pÃ¥logging." 
+			errorMessage = "forespørselen krever pålogging." 
 		+ "(Du kan ha blitt logget ut automatisk)";
 		
 		} else if(request.getParameter("invalidUsername") != null) {
-			errorMessage = "feil brukernavn, prÃ¸v igjen";
+			errorMessage = "feil brukernavn, prøv igjen";
 		}
 		request.setAttribute("errorMessage", errorMessage);
 		

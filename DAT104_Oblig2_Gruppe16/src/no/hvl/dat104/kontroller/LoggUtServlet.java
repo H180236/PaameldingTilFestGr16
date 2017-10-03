@@ -8,31 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import static no.hvl.dat104.hjelpeklasser.UrlMappings.*;
-/**
- * Servlet implementation class LoggUtServlet
- */
+
 @WebServlet("/" + LOGOUT_URL)
 public class LoggUtServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoggUtServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
+	//invaliderer sesjonsobjektet (logger brukeren ut, redirecter deretter til en logg-ut side
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sesjon = request.getSession();
 		sesjon.invalidate();
 		request.getRequestDispatcher("/WEB-INF/ferdig.jsp").forward(request, response);
-	}
-
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
