@@ -51,14 +51,24 @@ public class LoginServlet extends HttpServlet {
 		
 		
 		String telefonnummer = request.getParameter("telefonnummer");
-		HttpSession sesjon = request.getSession();
 		Deltaker deltaker = new Deltaker();
 		deltaker = dEAO.finnDeltaker(telefonnummer);
+		
+		
+		
 		
 		
 		if (deltaker!=null) {
 		
 		if (deltaker.getTelefonnummer().equals(telefonnummer)) {
+			
+			HttpSession sesjon = request.getSession(false);
+			if(sesjon!= null) {
+				sesjon.invalidate();
+			}
+			sesjon = request.getSession(true);
+			sesjon.setMaxInactiveInterval(20);
+			
 			sesjon.setAttribute("brukernavn", telefonnummer);
 			response.sendRedirect(DELTAKERLISTE_URL);
 		}
