@@ -1,7 +1,9 @@
 package no.hvl.dat104.kontroller;
 
+import static no.hvl.dat104.hjelpeklasser.UrlMappings.BETALING_URL;
+import static no.hvl.dat104.hjelpeklasser.UrlMappings.KASSERER_URL;
+
 import java.io.IOException;
-import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
@@ -13,8 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import no.hvl.dat104.datatilgang.DeltakerEAO;
-import no.hvl.dat104.modell.Deltaker;
-import static no.hvl.dat104.hjelpeklasser.UrlMappings.*;
 
 /**
  * Servlet implementation class KassererLogin
@@ -28,6 +28,7 @@ public class KassererLoginServlet extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -41,6 +42,16 @@ public class KassererLoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		String errorMessage = "";
+
+		if (request.getParameter("KassererPassord") != null) {
+			errorMessage = "forespÃ¸rslelen krever pÃ¥logging." + "(Du kan ha blitt logget ut automatisk)";
+
+		} else if (request.getParameter("invalidUsername") != null) {
+			errorMessage = "Feil passord, prÃ¸v igjen!";
+		}
+		request.setAttribute("errorMessage", errorMessage);
 		request.getRequestDispatcher("/WEB-INF/kassererlogin.jsp").forward(request, response);
 	}
 
@@ -55,8 +66,6 @@ public class KassererLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
-		
 		String telefonnummer = request.getParameter("telefonnummer");
 
 		HttpSession sesjon = request.getSession();
@@ -65,14 +74,14 @@ public class KassererLoginServlet extends HttpServlet {
 		System.out.print(kassererPassord);
 		String passord = kassererPassord;
 
-		if (telefonnummer.equals(passord) ) {
+		if (telefonnummer.equals(passord)) {
 			sesjon.setAttribute("kasserer", "1");
-			System.out.println("Rett passord skrevet inn, prøver å redirecte til" + BETALING_URL);
+			System.out.println("Rett passord skrevet inn, prï¿½ver ï¿½ redirecte til" + BETALING_URL);
 			response.sendRedirect(BETALING_URL);
 
 		} else {
-			response.sendRedirect(KASSERER_URL);
+			response.sendRedirect(KASSERER_URL + "?invalidUsername");
 		}
 	}
 
-}	
+}
