@@ -15,6 +15,7 @@ import no.hvl.dat104.datatilgang.DeltakerEAO;
 import no.hvl.dat104.hjelpeklasser.Validator;
 import no.hvl.dat104.modell.Deltaker;
 import static no.hvl.dat104.hjelpeklasser.UrlMappings.*;
+import no.hvl.dat104.hjelpeklasser.DeltakerHaandtering;
 
 /**
  * Servlet implementation class PaameldingServlet
@@ -52,32 +53,30 @@ public class PaameldingServlet extends HttpServlet {
 
 		// Fï¿½r tak i data fra pï¿½meldingsskjema, lager deretter et nytt
 		// deltakerobjekt
+		HttpSession sesjon = request.getSession();
 		Deltaker nyDeltaker = new Deltaker();
 		String telefonnummer = request.getParameter("mobil");
 		if (Validator.valider(request)) {
-			System.out.println(telefonnummer);
-			System.out.println("input validert, setter verdier");
-			nyDeltaker.setEtternavn(request.getParameter("etternavn"));
-			nyDeltaker.setFornavn(request.getParameter("fornavn"));
-			nyDeltaker.setTelefonnummer(telefonnummer);
-			nyDeltaker.setKjonn(request.getParameter("kjonn"));
+			DeltakerHaandtering dh = new DeltakerHaandtering();
+			nyDeltaker = dh.lagDeltaker(request);
+
 		} else {
 
 			request.getRequestDispatcher("/WEB-INF/paameldingsskjema.jsp").forward(request, response);
-			return;
+		
 		}
 
 		// Sjekker om telefonnummeret er i bruk, dersom det er i bruk blir man sendt
-		// tilbake til pï¿½melding, ellers blir deltaker lagt til i databasen
-		
+		// tilbake til påmelding, ellers blir deltaker lagt til i databasen
+
 		if (dEAO.finnDeltaker(telefonnummer) == null) {
 			dEAO.leggTilDeltaker(nyDeltaker);
 		} else {
 			System.out.println("Deltaker finnes, sendes til pï¿½meldingsskjema");
 			request.getRequestDispatcher("/WEB-INF/paameldingsskjema.jsp").forward(request, response);
-			return;
+			
 		}
-		HttpSession sesjon = request.getSession();
+		
 
 		sesjon.setAttribute("brukernavn", telefonnummer);
 		sesjon.setAttribute("Deltaker", nyDeltaker);

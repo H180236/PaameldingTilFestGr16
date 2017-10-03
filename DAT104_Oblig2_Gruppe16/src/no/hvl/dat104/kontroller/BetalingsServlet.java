@@ -24,41 +24,27 @@ import static no.hvl.dat104.hjelpeklasser.UrlMappings.*;
 public class BetalingsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public BetalingsServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		// Sjekker om man har logget inn som kasserer, får betalingsoversikten dersom
+		// innlogget.
 		HttpSession sesjon = request.getSession();
-		if (sesjon.getAttribute("kasserer")!=null && sesjon.getAttribute("kasserer").equals("1")) {
+		if (sesjon.getAttribute("kasserer").equals("1")) {
 			List<Deltaker> deltakere = dEAO.alleDeltakere();
 			sesjon.setAttribute("deltakere", deltakere);
-
 			request.getRequestDispatcher("/WEB-INF/betalingsoversikt.jsp").forward(request, response);
-		} else response.sendRedirect(KASSERER_URL);
-
+		} else
+			response.sendRedirect(KASSERER_URL);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	@EJB
 	DeltakerEAO dEAO;
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		// Registrer betaling til deltaker, redirecter tilbake til betalingsoversikten
+		// etter betaling er registrert
 		String telefonnummer = request.getParameter("telefonnummer");
 		dEAO.registrerBetaling(telefonnummer, true);
 		response.sendRedirect(BETALING_URL);
