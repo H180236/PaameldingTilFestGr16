@@ -38,16 +38,17 @@ public class BetalingsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
+
 		HttpSession sesjon = request.getSession();
-		
-			List <Deltaker> deltakere = dEAO.alleDeltakere();
+		if (sesjon.getAttribute("kasserer")!=null && sesjon.getAttribute("kasserer").equals("1")) {
+			List<Deltaker> deltakere = dEAO.alleDeltakere();
 			sesjon.setAttribute("deltakere", deltakere);
-			
+
 			request.getRequestDispatcher("/WEB-INF/betalingsoversikt.jsp").forward(request, response);
-	
+		} else response.sendRedirect(KASSERER_URL);
+
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

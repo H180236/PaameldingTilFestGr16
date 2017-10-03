@@ -66,11 +66,12 @@ public class KassererLoginServlet extends HttpServlet {
 		String passord = kassererPassord;
 
 		if (telefonnummer.equals(passord) ) {
+			sesjon.setAttribute("kasserer", "1");
 			System.out.println("Rett passord skrevet inn, prøver å redirecte til" + BETALING_URL);
 			response.sendRedirect(BETALING_URL);
 
 		} else {
-			response.sendRedirect(LOGIN_URL);
+			response.sendRedirect(KASSERER_URL);
 		}
 	}
 
