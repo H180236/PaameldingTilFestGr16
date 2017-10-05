@@ -30,16 +30,19 @@ public class BetalingsServlet extends HttpServlet {
 		// Sjekker om man har logget inn som kasserer, får betalingsoversikten dersom
 		// innlogget.
 		HttpSession sesjon = request.getSession();
-		if (sesjon.getAttribute("kasserer").equals("1")) {
-			List<Deltaker> deltakere = dEAO.alleDeltakere();
-			sesjon.setAttribute("deltakere", deltakere);
-			request.getRequestDispatcher("/WEB-INF/betalingsoversikt.jsp").forward(request, response);
+		if (sesjon.getAttribute("kasserer") != null) {
+			if (sesjon.getAttribute("kasserer").equals("1")) {
+				List<Deltaker> deltakere = dEAO.alleDeltakere();
+				sesjon.setAttribute("deltakere", deltakere);
+				request.getRequestDispatcher("/WEB-INF/betalingsoversikt.jsp").forward(request, response);
+			}
 		} else
 			response.sendRedirect(KASSERER_URL);
 	}
 
 	@EJB
 	DeltakerEAO dEAO;
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
