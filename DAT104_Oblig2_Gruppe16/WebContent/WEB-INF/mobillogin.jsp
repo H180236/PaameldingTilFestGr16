@@ -2,6 +2,10 @@
 	import="static no.hvl.dat104.hjelpeklasser.UrlMappings.LOGIN_URL"%>
 <%@ page contentType="text/html; charset=ISO-8859-1"%>
 <%@ page session="false"%>
+<%@ taglib
+    prefix="c"
+    uri="http://java.sun.com/jsp/jstl/core" 
+%>
 
 
 
@@ -13,24 +17,26 @@
 <title>Logg inn</title>
 </head>
 <body>
+<p>${ingenDeltaker}</p>
 	<div class="login-page">
 		<div class="form">
-			
-				<h2>Logg inn</h2>
-				<p>Det er kun registrerte deltagere som får se deltagerlisten.
-					Logg inn ved å gi mobil-nummeret ditt.</p>
-			
+
+			<h2>Logg inn</h2>
+			<p>Det er kun registrerte deltagere som får se deltagerlisten.
+				Logg inn ved å gi mobil-nummeret ditt.</p>
+
 			<form action="<%=LOGIN_URL%>" method="post">
 				<fieldset>
 					<legend>Login</legend>
+					
+					
 					<p>
-						Mobilnummer: <input type="password" name="telefonnummer" /><br>
-						<font color="red"> <%
- 	if (null != request.getAttribute("errorMessage")) {
- 		out.println(request.getAttribute("errorMessage"));
- 	}
- %>
-						</font>
+						Mobilnummer: <input type="password" name="telefonnummer" />
+						<c:out value="${sessionScope.ingenDeltaker}"/>
+
+						<br>
+						
+
 					</p>
 
 					<input type="submit" value="Logg inn" />
@@ -41,7 +47,7 @@
 					</p>
 					<p>
 						<a href="kasserer">Logge inn som kasserer?</a>
-						</p>
+					</p>
 				</fieldset>
 			</form>
 		</div>

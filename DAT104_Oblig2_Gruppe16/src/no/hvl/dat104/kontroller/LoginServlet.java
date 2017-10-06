@@ -21,71 +21,39 @@ import no.hvl.dat104.modell.Deltaker;
 @WebServlet("/" + LOGIN_URL)
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-  
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String errorMessage = "";
-		
-		if(request.getParameter("requiresLogin") != null) {
-			errorMessage = "forespørselen krever pålogging." 
-		+ "(Du kan ha blitt logget ut automatisk)";
-		
-		} else if(request.getParameter("invalidUsername") != null) {
-			errorMessage = "feil brukernavn, prøv igjen";
-		}
-		request.setAttribute("errorMessage", errorMessage);
-		
+	public LoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		request.getRequestDispatcher("/WEB-INF/mobillogin.jsp").forward(request, response);
 	}
 
 	@EJB
 	DeltakerEAO dEAO;
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		String telefonnummer = request.getParameter("telefonnummer");
-		Deltaker deltaker = new Deltaker();
-		try {
-		deltaker = dEAO.finnDeltaker(telefonnummer);
-		} catch (Exception e) {
-			System.out.println("Finner ikke deltaker");
-			response.sendRedirect("login");
-		}
-		
-		
-		
-		
-		
-		if (deltaker!=null) {
-		
-		if (deltaker.getTelefonnummer().equals(telefonnummer)) {
-			
-			HttpSession sesjon = request.getSession(false);
-			if(sesjon!= null) {
-				sesjon.invalidate();
-			}
-			sesjon = request.getSession(true);
-			sesjon.setMaxInactiveInterval(20);
-			
-			sesjon.setAttribute("brukernavn", telefonnummer);
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String feilmelding = "Finner ikke deltaker";
+
+		String telefonnummer = request.getParameter("mobil");
+		if (dEAO.eksistererDeltaker(telefonnummer)) {
+			request.getSession().setAttribute("brukernavn", telefonnummer);
+			System.out.println("Deltaker eksisterer");
+			request.getSession().removeAttribute("ingenDeltaker");
 			response.sendRedirect(DELTAKERLISTE_URL);
-		}
-		}
-		else {
-			response.sendRedirect(LOGIN_URL + "?invalidUsername");
+		} else {
+			System.out.println("Deltaker eksisterer ikke" + feilmelding);
+			request.getSession().setAttribute("ingenDeltaker", feilmelding);
+			request.getRequestDispatcher("/WEB-INF/mobillogin.jsp").forward(request, response);
 		}
 	
-		
-			
-		
 		
 	}
+	
 
 }

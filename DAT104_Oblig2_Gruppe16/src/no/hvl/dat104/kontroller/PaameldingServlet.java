@@ -32,16 +32,6 @@ public class PaameldingServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String errorMessage = "";
-
-		if (request.getParameter("requiresLogin") != null) {
-			errorMessage = "forespørslelen krever pålogging." + "(Du kan ha blitt logget ut automatisk)";
-
-		} else if (request.getParameter("invalidFornavn") != null) {
-			errorMessage = "Fornavn skal være 2-20 tegn og kan inneholde"
-					+ " bokstaver (inkl. æøåÆØÅ), bindestrek og mellomrom. Første tegn skal være en stor bokstav.";
-		}
-		request.setAttribute("errorMessage", errorMessage);
 
 		request.getRequestDispatcher("/WEB-INF/paameldingsskjema.jsp").forward(request, response);
 	}
