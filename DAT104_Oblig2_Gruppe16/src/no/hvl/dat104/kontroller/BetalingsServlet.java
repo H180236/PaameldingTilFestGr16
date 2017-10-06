@@ -17,9 +17,6 @@ import no.hvl.dat104.datatilgang.DeltakerEAO;
 import no.hvl.dat104.modell.Deltaker;
 import static no.hvl.dat104.hjelpeklasser.UrlMappings.*;
 
-/**
- * Servlet implementation class BetalingsServlet
- */
 @WebServlet("/" + BETALING_URL)
 public class BetalingsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
