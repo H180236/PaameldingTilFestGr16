@@ -9,28 +9,28 @@
 	<div class="login-page">
 		<div class="form">
 
-				<h2>Kasserer login</h2>
-				<form action="kasserer" method="post" >
-					<fieldset>
-						<legend>Kasserer login</legend>
-						<p>
-							Passord: <input type="password" name="telefonnummer" /> <font
-								color="red"> <%
+			<h2>Kasserer login</h2>
+			<form action="kasserer" method="post">
+				<fieldset>
+					<legend>Kasserer login</legend>
+					<p>
+						Passord: <input type="password" name="telefonnummer" /> <font
+							color="red"> <%
  	if (null != request.getAttribute("errorMessage")) {
  		out.println(request.getAttribute("errorMessage"));
  	}
  %>
-							</font>
+						</font>
 
-						</p>
-						
-							<input type="submit" value="Logg inn" />
-						
-				<p>
-					<a href="login">Tilbake til login som deltaker</a>
-				</p>
-					</fieldset>
-				</form>
+					</p>
+
+					<input type="submit" value="Logg inn" />
+
+					<p>
+						<a href="login">Tilbake til login som deltaker</a>
+					</p>
+				</fieldset>
+			</form>
 
 		</div>
 	</div>

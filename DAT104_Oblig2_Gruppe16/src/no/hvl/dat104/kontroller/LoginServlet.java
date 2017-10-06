@@ -1,6 +1,7 @@
 package no.hvl.dat104.kontroller;
 
-import static no.hvl.dat104.hjelpeklasser.UrlMappings.*;
+import static no.hvl.dat104.hjelpeklasser.UrlMappings.DELTAKERLISTE_URL;
+import static no.hvl.dat104.hjelpeklasser.UrlMappings.LOGIN_URL;
 
 import java.io.IOException;
 
@@ -10,10 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import no.hvl.dat104.datatilgang.DeltakerEAO;
-import no.hvl.dat104.modell.Deltaker;
 
 /**
  * Servlet implementation class LoginServlet
@@ -47,13 +46,11 @@ public class LoginServlet extends HttpServlet {
 			request.getSession().removeAttribute("ingenDeltaker");
 			response.sendRedirect(DELTAKERLISTE_URL);
 		} else {
-			System.out.println("Deltaker eksisterer ikke" + feilmelding);
+			System.out.println("Deltaker eksisterer ikke " + feilmelding);
 			request.getSession().setAttribute("ingenDeltaker", feilmelding);
 			request.getRequestDispatcher("/WEB-INF/mobillogin.jsp").forward(request, response);
 		}
-	
-		
+
 	}
-	
 
 }
