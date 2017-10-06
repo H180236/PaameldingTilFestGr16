@@ -56,34 +56,33 @@ public class PaameldingServlet extends HttpServlet {
 		// deltakerobjekt
 		HttpSession sesjon = request.getSession();
 		Deltaker nyDeltaker = new Deltaker();
-		Feilmelding feil = new Feilmelding();
 		String telefonnummer = request.getParameter("mobil");
+		Feilmelding feil = new Feilmelding(request);
 		if (feil.erAlleDataGyldige()) {
 			DeltakerHaandtering dh = new DeltakerHaandtering();
 			nyDeltaker = dh.lagDeltaker(request);
+			sesjon.removeAttribute("feilmelding");
 
 		} else {
 			feil.settOppFeilmelding();
 			sesjon.setAttribute("feilmelding", feil);
 			request.getRequestDispatcher("/WEB-INF/paameldingsskjema.jsp").forward(request, response);
-		
+
 		}
 
 		// Sjekker om telefonnummeret er i bruk, dersom det er i bruk blir man sendt
-		// tilbake til pï¿½melding, ellers blir deltaker lagt til i databasen
+		// tilbake til påmelding, ellers blir deltaker lagt til i databasen
 
 		if (dEAO.finnDeltaker(telefonnummer) == null) {
 			dEAO.leggTilDeltaker(nyDeltaker);
 		} else {
-			System.out.println("Deltaker finnes, sendes til pï¿½meldingsskjema");
+
 			request.getRequestDispatcher("/WEB-INF/paameldingsskjema.jsp").forward(request, response);
-			
+
 		}
-		
 
 		sesjon.setAttribute("brukernavn", telefonnummer);
 		sesjon.setAttribute("Deltaker", nyDeltaker);
-		
 
 		// Redirecter til bekreftelse dersom bruker blir meldt pï¿½
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/paameldingsbekreftelse.jsp");

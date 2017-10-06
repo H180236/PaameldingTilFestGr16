@@ -9,6 +9,10 @@ public class Feilmelding {
 	private String fornavnFeilmld;
 	private String etternavnFeilmld;
 	private String telefonnrFeilmld;
+	static final String DIGITS = "[0-9]";
+	static final String BOKSTAVER_MED_MELLOMROM = "[a-zA-Z -]";
+	static final String BOKSTAVER = "[a-zA-Zea¯Eÿ≈-]";
+	static final String STORE_BOKSTAVER = "[A-Z∆ÿ≈]";
 	
 	
 	public Feilmelding() {	
@@ -16,25 +20,25 @@ public class Feilmelding {
 	public Feilmelding(HttpServletRequest request) {	
 		fornavn= request.getParameter("fornavn");
 		etternavn= request.getParameter("etternavn");
-		telefonnr= request.getParameter("telefonnr");
+		telefonnr= request.getParameter("mobil");
 
 
 	}
 	
 	public void settOppFeilmelding() {
-		Validator vali = new Validator();
-		if(!Validator.validFornavn(fornavn)) {
+		
+		if(!validFornavn()) {
 			fornavn="";
-			fornavnFeilmld= "Kan ikke v√¶re tom.";
+			fornavnFeilmld= "Kan ikke vÊre tom.";
 			System.out.println("Fornavn ikke validert");
 		}
-		if(!Validator.validEtternavn(etternavn)) {
+		if(!validEtternavn()) {
 			etternavn="";
-			etternavnFeilmld="Kan ikke v√¶re tom.";
+			etternavnFeilmld="Kan ikke vÊre tom.";
 		}
-		if(!Validator.validTelNum(telefonnr)) {
+		if(!validTelefon()) {
 			telefonnr="";
-			telefonnrFeilmld="M√• v√¶re 8 siffer";
+			telefonnrFeilmld="MÂ vÊre 8 siffer";
 		}
 	}
 	
@@ -78,9 +82,36 @@ public class Feilmelding {
 	public void setTelefonnrFeilmld(String telefonnrFeilmld) {
 		this.telefonnrFeilmld = telefonnrFeilmld;
 	}
+	
+	public boolean validFornavn() {
+		if (fornavn == null) {
+			System.out.println("Fornavn er vist som null");
+			return false;
+		}
+		return fornavn.matches("^" + STORE_BOKSTAVER + BOKSTAVER_MED_MELLOMROM + "{1,19}");
+	}
+	
+	public boolean validEtternavn() {
+		if (etternavn == null) {
+			System.out.println("Etternavn er vist som null");
+			return false;
+		}
+		return etternavn.matches("^" + STORE_BOKSTAVER + BOKSTAVER + "{1,19}");
+	}
+	
+	public boolean validTelefon() {
+		if (telefonnr == null) {
+			System.out.println("Telefon er vist som null");
+			return false;
+		}
+
+		return telefonnr.matches("^" + DIGITS + "{8}");
+	
+	}
+
+	
 	public boolean erAlleDataGyldige() {
-		Validator vali = new Validator();
-		return (vali.validFornavn(fornavn) && vali.validEtternavn(etternavn) && vali.validTelNum(telefonnr));
+		return (validFornavn() && validEtternavn() && validTelefon());
 		
 	}
 
