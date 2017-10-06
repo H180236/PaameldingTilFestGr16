@@ -42,16 +42,19 @@ public class PaameldingServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// Fï¿½r tak i data fra pï¿½meldingsskjema, lager deretter et nytt
-		// deltakerobjekt
+		//Validerer om input er gyldig og om telefonnummer er brukt, sender til deltakerliste om rett.
 		HttpSession sesjon = request.getSession();
 		Deltaker nyDeltaker = new Deltaker();
 		String telefonnummer = request.getParameter("mobil");
 		Feilmelding feil = new Feilmelding(request);
-		if (feil.erAlleDataGyldige()) {
+		if (feil.erAlleDataGyldige() && !dEAO.eksistererDeltaker(telefonnummer)) {
 			DeltakerHaandtering dh = new DeltakerHaandtering();
 			nyDeltaker = dh.lagDeltaker(request);
 			sesjon.removeAttribute("feilmelding");
+			dEAO.leggTilDeltaker(nyDeltaker);
+			sesjon.setAttribute("brukernavn", telefonnummer);
+			sesjon.setAttribute("Deltaker", nyDeltaker);
+			request.getRequestDispatcher("/WEB-INF/paameldingsbekreftelse.jsp").forward(request, response);
 
 		} else {
 			feil.settOppFeilmelding();
@@ -60,23 +63,6 @@ public class PaameldingServlet extends HttpServlet {
 
 		}
 
-		// Sjekker om telefonnummeret er i bruk, dersom det er i bruk blir man sendt
-		// tilbake til påmelding, ellers blir deltaker lagt til i databasen
-
-		if (dEAO.finnDeltaker(telefonnummer) == null) {
-			dEAO.leggTilDeltaker(nyDeltaker);
-		} else {
-
-			request.getRequestDispatcher("/WEB-INF/paameldingsskjema.jsp").forward(request, response);
-
-		}
-
-		sesjon.setAttribute("brukernavn", telefonnummer);
-		sesjon.setAttribute("Deltaker", nyDeltaker);
-
-		// Redirecter til bekreftelse dersom bruker blir meldt pï¿½
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/paameldingsbekreftelse.jsp");
-		dispatcher.forward(request, response);
 	}
 
 }
