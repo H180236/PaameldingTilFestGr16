@@ -33,17 +33,9 @@ public class KassererLoginServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String errorMessage = "";
-
-		if (request.getParameter("KassererPassord") != null) {
-			errorMessage = "forespørselen krever pålogging." + "(Du kan ha blitt logget ut automatisk)";
-
-		} else if (request.getParameter("invalidUsername") != null) {
-			errorMessage = "Feil passord, prøv igjen!";
-		}
-		request.setAttribute("errorMessage", errorMessage);
+		
 		request.getRequestDispatcher("/WEB-INF/kassererlogin.jsp").forward(request, response);
+
 	}
 
 	@EJB
@@ -65,7 +57,8 @@ public class KassererLoginServlet extends HttpServlet {
 			response.sendRedirect(BETALING_URL);
 
 		} else {
-			response.sendRedirect(KASSERER_URL + "?invalidUsername");
+			sesjon.setAttribute("feilMelding", "Ugyldig passord");
+			response.sendRedirect(KASSERER_URL);
 		}
 	}
 

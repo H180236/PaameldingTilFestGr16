@@ -37,16 +37,17 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String feilmelding = "Finner ikke deltaker";
+		String feilmelding = "Deltaker med dette telefonnummeret er ikke registrert";
 
 		String telefonnummer = request.getParameter("mobil");
 		if (dEAO.eksistererDeltaker(telefonnummer)) {
+			request.getSession().removeAttribute("ingenDeltaker");
 			request.getSession().setAttribute("brukernavn", telefonnummer);
 			System.out.println("Deltaker eksisterer");
-			request.getSession().removeAttribute("ingenDeltaker");
+
 			response.sendRedirect(DELTAKERLISTE_URL);
 		} else {
-			System.out.println("Deltaker eksisterer ikke " + feilmelding);
+
 			request.getSession().setAttribute("ingenDeltaker", feilmelding);
 			request.getRequestDispatcher("/WEB-INF/mobillogin.jsp").forward(request, response);
 		}

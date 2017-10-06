@@ -13,6 +13,11 @@
 <title>Logg inn</title>
 </head>
 <body>
+	<ul>
+		<li><a href="login">Logg inn</a></li>
+		<li><a href="paamelding">Meld deg på</a></li>
+		<li><a href="kasserer">Kasserer</a></li>
+	</ul>
 	<div class="login-page">
 		<div class="form">
 
@@ -24,21 +29,13 @@
 				<fieldset>
 					<legend>Login</legend>
 
-
 					<p>
-						Mobilnummer: <input type="password" name="mobil" />
-						${ingenDeltaker} <br>
+						Mobilnummer: <input type="password" name="mobil" /> <br>
 					</p>
+					<p style="color: red">${ingenDeltaker}</p>
 
 					<input type="submit" value="Logg inn" />
 
-
-					<p>
-						<a href="paamelding"> Ikke påmeldt?</a>
-					</p>
-					<p>
-						<a href="kasserer">Logge inn som kasserer?</a>
-					</p>
 				</fieldset>
 			</form>
 		</div>

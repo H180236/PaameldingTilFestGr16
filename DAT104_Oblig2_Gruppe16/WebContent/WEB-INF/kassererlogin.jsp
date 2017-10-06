@@ -6,6 +6,11 @@
 <title>Kasserer login</title>
 </head>
 <body>
+<ul>
+  <li><a href="login">Logg inn</a></li>
+  <li><a href="paamelding">Meld deg på</a></li>
+  <li><a href="kasserer">Kasserer</a></li>
+</ul>
 	<div class="login-page">
 		<div class="form">
 
@@ -14,21 +19,13 @@
 				<fieldset>
 					<legend>Kasserer login</legend>
 					<p>
-						Passord: <input type="password" name="telefonnummer" /> <font
-							color="red"> <%
- 	if (null != request.getAttribute("errorMessage")) {
- 		out.println(request.getAttribute("errorMessage"));
- 	}
- %>
-						</font>
+						Passord: <input type="password" name="telefonnummer" />
 
 					</p>
+					<p style = "color:red"> ${feilMelding}</p>
 
 					<input type="submit" value="Logg inn" />
 
-					<p>
-						<a href="login">Tilbake til login som deltaker</a>
-					</p>
 				</fieldset>
 			</form>
 

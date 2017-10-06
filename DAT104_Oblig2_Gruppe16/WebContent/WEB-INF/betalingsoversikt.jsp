@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="Stylesheet.css">
 <meta charset="ISO-8859-1">
 <title>Betalingsoversikt</title>
 </head>
@@ -41,8 +42,6 @@
 		
 		</table>
 	</form>
-	<p>
-		<a href="logout">Ferdig</a>
-	</p>
+	<a href="logout"><button class = "button">Logg ut</button></a>
 </body>
 </html>

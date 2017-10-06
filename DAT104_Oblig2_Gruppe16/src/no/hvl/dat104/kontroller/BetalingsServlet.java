@@ -27,13 +27,13 @@ public class BetalingsServlet extends HttpServlet {
 		// Sjekker om man har logget inn som kasserer, får betalingsoversikten dersom
 		// innlogget.
 		HttpSession sesjon = request.getSession();
-		if (sesjon.getAttribute("kasserer") != null) {
-			if (sesjon.getAttribute("kasserer").equals("1")) {
+		
+			if (sesjon.getAttribute("kasserer")== "1") {
 				List<Deltaker> deltakere = dEAO.alleDeltakere();
 				sesjon.setAttribute("deltakere", deltakere);
 				request.getRequestDispatcher("/WEB-INF/betalingsoversikt.jsp").forward(request, response);
 			}
-		} else
+		 else
 			response.sendRedirect(KASSERER_URL);
 	}
 

@@ -9,6 +9,11 @@
 <title>Påmelding</title>
 </head>
 <body>
+<ul>
+  <li><a href="login">Logg inn</a></li>
+  <li><a href="paamelding">Meld deg på</a></li>
+  <li><a href="kasserer">Kasserer</a></li>
+</ul>
 	<div class="login-page">
 		<div class="form">
 			<h2>Påmelding</h2>
@@ -38,7 +43,7 @@
 					</p>
 				</fieldset>
 			</form>
-			<a href="login">Allerede påmeldt? Trykk her for å logge inn</a>
+			
 </div>
 </div>
 </body>

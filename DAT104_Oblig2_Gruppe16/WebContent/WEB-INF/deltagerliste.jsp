@@ -5,19 +5,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="Stylesheet.css">
 <meta charset="ISO-8859-1">
 <title>Deltagerliste</title>
 </head>
-<body>
-	<h2>Deltagerliste</h2>
-	<table border="1">
-		<tr bgcolor="#cccccc">
-			<th>Kjønn</th>
-			<th align="left">Navn</th>
-		</tr>
-		<c:forEach items="${deltakere}" var="deltaker">
 
-
+	<body>
+<div class="table-title">
+<h3>Deltakerliste</h3>
+</div>
+<table class="table-fill">
+<thead>
+<tr>
+<th class="text-left">Kjønn</th>
+<th class="text-left">Navn</th>
+</tr>
+</thead>
+<tbody class="table-hover">
+<c:forEach items="${deltakere}" var="deltaker">
 			<tr>
 			<c:set var = "brukernavn" scope = "session" value = "${brukernavn}"/>
 			<c:set var = "betalt" value = "${deltaker.betalingsstatus}"/>
@@ -29,13 +34,14 @@
 						<td align="center">&#9792;</td>
 					</c:otherwise>
 				</c:choose>
+				
 				<c:choose>
 				
 					<c:when test="${deltaker.telefonnummer.equals(brukernavn) && !betalt }">
-						<td style="background-color:red">${deltaker.fornavn} ${deltaker.etternavn}</td>
+						<td style="background-color:#ff6633">${deltaker.fornavn} ${deltaker.etternavn}</td>
 					</c:when>
 					<c:when test="${deltaker.telefonnummer.equals(brukernavn) && betalt }">
-						<td style="background-color:green">${deltaker.fornavn} ${deltaker.etternavn}</td>
+						<td style="background-color:#cbffb3">${deltaker.fornavn} ${deltaker.etternavn}</td>
 					</c:when>
 					
 					<c:otherwise>
@@ -49,9 +55,8 @@
 
 
 		</c:forEach>
-	</table>
-	<p>
-		<a href="logout">Ferdig</a>
-	</p>
+</tbody>
+</table>
+	<a href="logout"><button class = "button">Logg ut</button></a>
 </body>
 </html>
