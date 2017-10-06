@@ -15,32 +15,33 @@
 <body>
 	<div class="login-page">
 		<div class="form">
-			<form class="register-form">
+			
 				<h2>Logg inn</h2>
 				<p>Det er kun registrerte deltagere som får se deltagerlisten.
 					Logg inn ved å gi mobil-nummeret ditt.</p>
-			</form>
+			
 			<form action="<%=LOGIN_URL%>" method="post">
 				<fieldset>
 					<legend>Login</legend>
 					<p>
 						Mobilnummer: <input type="password" name="telefonnummer" /><br>
-						<font color="red">
-					<%
-						if (null != request.getAttribute("errorMessage")) {
-							out.println(request.getAttribute("errorMessage"));
-						}
-					%>
-					</font></p>
-						
-						<input type="submit" value="Logg inn" />
-					
-					
+						<font color="red"> <%
+ 	if (null != request.getAttribute("errorMessage")) {
+ 		out.println(request.getAttribute("errorMessage"));
+ 	}
+ %>
+						</font>
+					</p>
+
+					<input type="submit" value="Logg inn" />
+
+
 					<p>
 						<a href="paamelding"> Ikke påmeldt?</a>
 					</p>
 					<p>
 						<a href="kasserer">Logge inn som kasserer?</a>
+						</p>
 				</fieldset>
 			</form>
 		</div>
