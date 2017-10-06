@@ -16,16 +16,17 @@
 				<fieldset>
 					<legend>Personlige data</legend>
 					<p>
-						Fornavn: <input type="text" name="fornavn" value="${feilmelding.fornavn}" /> 
-						${feilmelding.fornavnFeilmld}
+						Fornavn: <font color="red"><input type="text" name="fornavn" value="${feilmelding.fornavn}" /> 
+						${feilmelding.fornavnFeilmld}</font>
+						
 					</p>
 					<p>
-						Etternavn: <input type="text" name="etternavn" value="${feilmelding.etternavn}" />
-						${feilmelding.etternavnFeilmld}
+						Etternavn: <font color="red"><input type="text" name="etternavn" value="${feilmelding.etternavn}" />
+						${feilmelding.etternavnFeilmld}</font>
 					</p>
 					<p>
-						Mobil (8 siffer): <input type="text" name="mobil" value="${feilmelding.telefonnr}" />
-						${feilmelding.telefonnrFeilmld}
+						Mobil (8 siffer): <font color="red"><input type="text" name="mobil" value="${feilmelding.telefonnr}" />
+						${feilmelding.telefonnrFeilmld}</font>
 					</p>
 					<p>
 						Kjønn: <input type="radio"  id="kjonn" name="kjonn" value="M"
