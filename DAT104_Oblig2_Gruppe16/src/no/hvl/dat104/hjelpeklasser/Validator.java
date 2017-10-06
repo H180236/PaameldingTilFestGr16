@@ -7,9 +7,9 @@ import java.util.*;
 
 public class Validator {
 	static final String DIGITS = "[0-9]";
-	static final String BOKSTAVER_MED_MELLOMROM = "[a-zA-ZæøåÆØÅ -]";
-	static final String BOKSTAVER = "[a-zA-ZæøåÆØÅ-]";
-	static final String STORE_BOKSTAVER = "[A-ZÆØÅ]";
+	static final String BOKSTAVER_MED_MELLOMROM = "[a-zA-Z -]";
+	static final String BOKSTAVER = "[a-zA-Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-]";
+	static final String STORE_BOKSTAVER = "[A-ZÃ†Ã˜Ã…]";
 
 	static List<String> telnums = new ArrayList<String>();
 

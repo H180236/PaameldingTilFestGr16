@@ -2,7 +2,7 @@ package no.hvl.dat104.hjelpeklasser;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class FeilmeldingPaamelding {
+public class Feilmelding {
 	private String fornavn;
 	private String etternavn;
 	private String telefonnr;
@@ -11,26 +11,28 @@ public class FeilmeldingPaamelding {
 	private String telefonnrFeilmld;
 	
 	
-	public FeilmeldingPaamelding() {	
+	public Feilmelding() {	
 	}
-	public FeilmeldingPaamelding(HttpServletRequest request) {	
+	public Feilmelding(HttpServletRequest request) {	
 		fornavn= request.getParameter("fornavn");
 		etternavn= request.getParameter("etternavn");
 		telefonnr= request.getParameter("telefonnr");
+
 
 	}
 	
 	public void settOppFeilmelding() {
 		Validator vali = new Validator();
-		if(!vali.validFornavn(fornavn)) {
+		if(!Validator.validFornavn(fornavn)) {
 			fornavn="";
 			fornavnFeilmld= "Kan ikke være tom.";
+			System.out.println("Fornavn ikke validert");
 		}
-		if(!vali.validEtternavn(etternavn)) {
+		if(!Validator.validEtternavn(etternavn)) {
 			etternavn="";
 			etternavnFeilmld="Kan ikke være tom.";
 		}
-		if(vali.validTelNum(telefonnr)) {
+		if(!Validator.validTelNum(telefonnr)) {
 			telefonnr="";
 			telefonnrFeilmld="Må være 8 siffer";
 		}
@@ -75,6 +77,11 @@ public class FeilmeldingPaamelding {
 	}
 	public void setTelefonnrFeilmld(String telefonnrFeilmld) {
 		this.telefonnrFeilmld = telefonnrFeilmld;
+	}
+	public boolean erAlleDataGyldige() {
+		Validator vali = new Validator();
+		return (vali.validFornavn(fornavn) && vali.validEtternavn(etternavn) && vali.validTelNum(telefonnr));
+		
 	}
 
 

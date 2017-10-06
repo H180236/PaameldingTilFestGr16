@@ -16,6 +16,7 @@ import no.hvl.dat104.hjelpeklasser.Validator;
 import no.hvl.dat104.modell.Deltaker;
 import static no.hvl.dat104.hjelpeklasser.UrlMappings.*;
 import no.hvl.dat104.hjelpeklasser.DeltakerHaandtering;
+import no.hvl.dat104.hjelpeklasser.Feilmelding;
 
 /**
  * Servlet implementation class PaameldingServlet
@@ -55,19 +56,21 @@ public class PaameldingServlet extends HttpServlet {
 		// deltakerobjekt
 		HttpSession sesjon = request.getSession();
 		Deltaker nyDeltaker = new Deltaker();
+		Feilmelding feil = new Feilmelding();
 		String telefonnummer = request.getParameter("mobil");
-		if (Validator.valider(request)) {
+		if (feil.erAlleDataGyldige()) {
 			DeltakerHaandtering dh = new DeltakerHaandtering();
 			nyDeltaker = dh.lagDeltaker(request);
 
 		} else {
-
+			feil.settOppFeilmelding();
+			sesjon.setAttribute("feilmelding", feil);
 			request.getRequestDispatcher("/WEB-INF/paameldingsskjema.jsp").forward(request, response);
 		
 		}
 
 		// Sjekker om telefonnummeret er i bruk, dersom det er i bruk blir man sendt
-		// tilbake til påmelding, ellers blir deltaker lagt til i databasen
+		// tilbake til pï¿½melding, ellers blir deltaker lagt til i databasen
 
 		if (dEAO.finnDeltaker(telefonnummer) == null) {
 			dEAO.leggTilDeltaker(nyDeltaker);
@@ -80,6 +83,7 @@ public class PaameldingServlet extends HttpServlet {
 
 		sesjon.setAttribute("brukernavn", telefonnummer);
 		sesjon.setAttribute("Deltaker", nyDeltaker);
+		
 
 		// Redirecter til bekreftelse dersom bruker blir meldt pï¿½
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/paameldingsbekreftelse.jsp");
