@@ -11,15 +11,15 @@
 			<legend>Kasserer login</legend>
 			<p>
 				Passord: <input type="password" name="telefonnummer" />
-			</p>
-			<p><font color="red">
+			<font color="red">
 					<%
 						if (null != request.getAttribute("errorMessage")) {
 							out.println(request.getAttribute("errorMessage"));
 						}
 					%>
 					</font>
-					</p>
+					
+			</p>
 			<p>
 				<input type="submit" value="Logg inn" />
 			</p>

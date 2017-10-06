@@ -24,16 +24,18 @@
 				<fieldset>
 					<legend>Login</legend>
 					<p>
-						Mobilnummer: <input type="password" name="telefonnummer" /> <input
-							type="submit" value="Logg inn" />
-					</p>
-					<p><font color="red">
+						Mobilnummer: <input type="password" name="telefonnummer" /><br>
+						<font color="red">
 					<%
 						if (null != request.getAttribute("errorMessage")) {
 							out.println(request.getAttribute("errorMessage"));
 						}
 					%>
 					</font></p>
+						
+						<input type="submit" value="Logg inn" />
+					
+					
 					<p>
 						<a href="paamelding"> Ikke påmeldt?</a>
 					</p>
