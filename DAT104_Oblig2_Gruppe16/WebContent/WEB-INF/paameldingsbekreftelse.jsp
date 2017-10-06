@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="Stylesheet.css">
 <meta charset="ISO-8859-1">
 <title>Påmeldingsbekreftelse</title>
 </head>

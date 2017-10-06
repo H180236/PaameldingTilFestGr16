@@ -1,3 +1,4 @@
+
 <%@ page
 	import="static no.hvl.dat104.hjelpeklasser.UrlMappings.PAAMELDING_URL"%>
 
@@ -35,7 +36,7 @@
 							value="F" />kvinne
 					</p>
 					<p>
-						<input type="submit" value="Meld meg på" />
+						<input type="submit" value="Meld meg på" id=button />
 					</p>
 				</fieldset>
 			</form>
