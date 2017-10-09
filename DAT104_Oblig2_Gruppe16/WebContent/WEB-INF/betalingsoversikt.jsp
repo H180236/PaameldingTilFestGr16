@@ -42,6 +42,8 @@
 		
 		</table>
 	</form>
+	
+	
 	<a href="logout"><button class = "button">Logg ut</button></a>
 </body>
 </html>

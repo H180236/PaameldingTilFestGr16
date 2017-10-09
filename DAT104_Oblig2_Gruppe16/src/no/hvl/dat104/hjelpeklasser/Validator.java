@@ -15,7 +15,7 @@ public class Validator {
 
 	public static boolean valider(HttpServletRequest request) {
 
-		boolean ok = true;
+	
 		String fornavn = request.getParameter("fornavn");
 		String etternavn = request.getParameter("etternavn");
 		String kjonn = request.getParameter("kjonn");

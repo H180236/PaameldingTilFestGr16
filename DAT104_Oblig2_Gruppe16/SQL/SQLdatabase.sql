@@ -14,7 +14,6 @@ CREATE TABLE fest.deltaker (
   kjonn fest.gender NOT NULL,
   telefonnummer character(8) NOT NULL,
   betalingsstatus BOOLEAN,
-  kasserer BOOLEAN,
   primary key (telefonnummer)
 );
 
