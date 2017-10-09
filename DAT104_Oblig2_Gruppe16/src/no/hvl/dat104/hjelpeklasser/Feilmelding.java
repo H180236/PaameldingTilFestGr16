@@ -29,16 +29,16 @@ public class Feilmelding {
 		
 		if(!validFornavn()) {
 			fornavn="";
-			fornavnFeilmld= "Kan ikke være tom.";
+			fornavnFeilmld= "Minst 2 tegn, stor forbokstav.";
 			System.out.println("Fornavn ikke validert");
 		}
 		if(!validEtternavn()) {
 			etternavn="";
-			etternavnFeilmld="Kan ikke være tom.";
+			etternavnFeilmld="Minst 2 tegn, stor forbokstav.";
 		}
 		if(!validTelefon()) {
 			telefonnr="";
-			telefonnrFeilmld="Må være 8 siffer";
+			telefonnrFeilmld="Må være 8 siffer og ikke i bruk";
 		}
 	}
 	

@@ -11,11 +11,8 @@ public class Validator {
 	static final String BOKSTAVER = "[a-zA-Z������-]";
 	static final String STORE_BOKSTAVER = "[A-ZÆØÅ]";
 
-	static List<String> telnums = new ArrayList<String>();
-
 	public static boolean valider(HttpServletRequest request) {
 
-	
 		String fornavn = request.getParameter("fornavn");
 		String etternavn = request.getParameter("etternavn");
 		String kjonn = request.getParameter("kjonn");
